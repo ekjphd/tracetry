@@ -1,68 +1,74 @@
-<body>
-  <a href="index.html" style="position:fixed; top:15px; left:15px; z-index:999; font-family:Arial; color:#333;">← Back to Home</a>
-  <script>
-    function createGrammar(rules) {
-      return {
-        flatten: function(rule) {
-          return rule.replace(/#(.*?)#/g, function(_, key) {
-            let options = rules[key];
-            return options[Math.floor(Math.random() * options.length)];
-          });
-        }
-      };
-    }
-
-    let grammarData = {
-      "noun": ["teléfono", "gato", "sol", "alegador", "televisor", "arándano", "aguacate", "conejo", "pollo"],
-      "adjective": ["feliz", "morado", "triste", "guapo", "azul", "marron", "rosa", "pequeño", "dulce"],
-      "verb": ["está corriendo", "está estudiando", "está saltando", "está bailando", "está cantando", "está comiendo", "está durmiendo"],
-      "adverb": ["rápidamente", "lentamente", "silenciosamente", "alegremente"],
-      "phrase": ["Yo soy", "Tú eres", "Él es", "Ella es"],
-      "origin": [
-        "#phrase# #noun# #adjective#",
-        "#phrase# un #noun#",
-        "El #noun# #verb#",
-        "Un #noun# es #adjective#",
-        "¿Dónde está el #noun# #adjective#?",
-        "El #noun# #adjective# #verb# #adverb#"
-      ]
-    };
-
-    let lines = [];
-    let grammar = createGrammar(grammarData);
-
-    for (let i = 0; i < 5; i++) {
-      let originPattern = grammarData.origin[Math.floor(Math.random() * grammarData.origin.length)];
-      let sentence = grammar.flatten(originPattern);
-      lines.push(sentence);
-    }
-
-    let i = 0;
-
-    function setup() {
-      createCanvas(windowWidth, windowHeight);
-      background("#D4F8F1f");
-    }
-
-    function draw() {
-      background("#2FE4C101");
-    }
-
-    function mouseClicked() {
-      let grammar = createGrammar(grammarData);
-      let originPattern = grammarData.origin[Math.floor(Math.random() * grammarData.origin.length)];
-      let sentence = grammar.flatten(originPattern);
-      lines[i] = sentence;
-      textSize(random(20, 100));
-      textFont("Arial");
-      textAlign(CENTER, CENTER);
-      fill(random(255), random(255), random(255));
-      text(lines[i], mouseX, mouseY);
-      if (i < (lines.length - 1)) {
-        i++;
-      } else {
-        i = 0;
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+  <body>
+    <a href="index.html" style="position:fixed; top:15px; left:15px; z-index:999; font-family:Arial; color:#333;">← Back to Home</a>
+    <script>
+      function createGrammar(rules) {
+        return {
+          flatten: function(rule) {
+            return rule.replace(/#(.*?)#/g, function(_, key) {
+              let options = rules[key];
+              return options[Math.floor(Math.random() * options.length)];
+            });
+          }
+        };
       }
-    }
-  </script>
-</body>
+
+      let grammarData = {
+        "noun": ["teléfono", "gato", "sol", "alegador", "televisor", "arándano", "aguacate", "conejo", "pollo"],
+        "adjective": ["feliz", "morado", "triste", "guapo", "azul", "marron", "rosa", "pequeño", "dulce"],
+        "verb": ["está corriendo", "está estudiando", "está saltando", "está bailando", "está cantando", "está comiendo", "está durmiendo"],
+        "adverb": ["rápidamente", "lentamente", "silenciosamente", "alegremente"],
+        "phrase": ["Yo soy", "Tú eres", "Él es", "Ella es"],
+        "origin": [
+          "#phrase# #noun# #adjective#",
+          "#phrase# un #noun#",
+          "El #noun# #verb#",
+          "Un #noun# es #adjective#",
+          "¿Dónde está el #noun# #adjective#?",
+          "El #noun# #adjective# #verb# #adverb#"
+        ]
+      };
+
+      let lines = [];
+      let grammar = createGrammar(grammarData);
+
+      for (let i = 0; i < 5; i++) {
+        let originPattern = grammarData.origin[Math.floor(Math.random() * grammarData.origin.length)];
+        let sentence = grammar.flatten(originPattern);
+        lines.push(sentence);
+      }
+
+      let i = 0;
+
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        background("#D4F8F1f");
+      }
+
+      function draw() {
+        background("#2FE4C101");
+      }
+
+      function mouseClicked() {
+        let grammar = createGrammar(grammarData);
+        let originPattern = grammarData.origin[Math.floor(Math.random() * grammarData.origin.length)];
+        let sentence = grammar.flatten(originPattern);
+        lines[i] = sentence;
+        textSize(random(20, 100));
+        textFont("Arial");
+        textAlign(CENTER, CENTER);
+        fill(random(255), random(255), random(255));
+        text(lines[i], mouseX, mouseY);
+        if (i < (lines.length - 1)) {
+          i++;
+        } else {
+          i = 0;
+        }
+      }
+    </script>
+  </body>
+</html>
