@@ -9,7 +9,10 @@ I began with a copy of a [sketch created by Anastasia Salter for a class demonst
 
 Other configurations include simple sentence beginnings like “Yo soy” (I am), and all nouns and adjectives are in the masculine form to maintain a simple grammatical structure. Though grammatical, sentences generated are as silly as my 11-year-old’s example, such as, “¿Dónde está el televisor guapo?” (Where is the handsome television?).
 
-
+## Notes: 
+- [Interact with "Yo soy un teléfono: Playful procedural poetry with Tracery and P5.js" here](tracetry.html)
+- Click anywhere on the screen to generate tracetry
+- This was originally created on April 9, 2025 in [Open Processing](https://openprocessing.org/@u514493/2609506)
 
 
 
